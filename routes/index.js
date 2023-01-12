@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require("../knex");
 
 router.get("/", async (req, res) => {
-  const tasks = await knex("tasks").select("*");
+  const tasks = await knex("tasks").orderBy("Id", "asc").select("*");
   return res.status(200).json({ data: tasks, message: "Success" });
 });
 
